@@ -17,5 +17,34 @@ def parse_template(template):
 
     return stripped_template, tuple(matches)
 
+
+
 def merge(template, values):
     return template.format(*values)
+
+if __name__ == "__main__":
+    template_file_path = "../assets/dark_and_stormy_night_template.txt"
+  
+
+    # Read the template from the file
+    template_content = read_template(template_file_path)
+   
+
+    # Parse the template into usable parts
+    stripped_template, placeholders = parse_template(template_content)
+    
+    # Collect user inputs for each placeholder
+    user_inputs = []
+    for placeholder in placeholders:
+        user_input = input(f"Enter a {placeholder}): ")
+        print(user_input)
+        # user_inputs[placeholder] = user_input
+        user_inputs.append(user_input)
+
+    # Populate the template with user inputs
+    madlib_result = stripped_template
+    for placeholder, value in user_inputs.items():
+        madlib_result = madlib_result.replace("{" + placeholder + "}", value)
+
+    # Print the final Madlib story
+    print("\nMadlib Result:\n", madlib_result)
