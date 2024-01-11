@@ -1,5 +1,5 @@
 import pytest
-from madlib_cli.madlib import read_template
+from madlib_cli.madlib import read_template, parse_template, merge
 
 
 def test_read_template_returns_stripped_string():
@@ -20,7 +20,7 @@ def test_parse_template():
     assert actual_parts == expected_parts
 
 
-@pytest.mark.skip("pending")
+# @pytest.mark.skip("pending")
 def test_merge():
     actual = merge("It was a {} and {} {}.", ("dark", "stormy", "night"))
     expected = "It was a dark and stormy night."

@@ -16,3 +16,6 @@ def parse_template(template):
     stripped_template = re.sub(pattern, '{}', template)
 
     return stripped_template, tuple(matches)
+
+def merge(template, values):
+    return template.format(*values)
